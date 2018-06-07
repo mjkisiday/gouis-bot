@@ -25,8 +25,7 @@ import java.util.Scanner;
          // Problem 1         
          // Create and set a String called message here
       
-         String message = "I'm testing out the twitter4j API for Java.  Thanks @cscheerleader! "
-                        + "You can find out more at https://github.com/riagalanos/cs1-twitter";
+         String message = "philosophical v a g e n e";
            bigBird.tweetOut(message);
 
          // Problem 2

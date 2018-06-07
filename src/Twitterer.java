@@ -49,7 +49,13 @@ public class Twitterer
       @SuppressWarnings("unchecked")
       public void queryHandle(String handle) throws TwitterException, IOException
       {
-   
+            statuses.clear();
+            fetchTweets(handle);
+            int counter = statuses.size();
+            while(counter > 0){
+                counter--;
+                System.out.println("Tweet #"+counter+": "+statuses.get(counter).getText());
+            }
       }
    	
      /** 
@@ -59,7 +65,13 @@ public class Twitterer
       */
       private void fetchTweets(String handle) throws TwitterException, IOException
       {
-    
+            Paging page = new Paging(1,200);
+            int p = 1;
+            while(p <= 10){
+                page.setPage(p);
+                statuses.addAll(twitter.getUserTimeline(handle, page));
+                p++;
+            }
        }   
     
      /******************  Part 3 *******************/
