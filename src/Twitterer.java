@@ -7,11 +7,14 @@ import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.TwitterException;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Twitterer
    {
@@ -22,33 +25,23 @@ public class Twitterer
      
       public Twitterer(PrintStream console)
       {
-         // Makes an instance of Twitter - this is re-useable and thread safe.
-         // Connects to Twitter and performs authorizations.
          twitter = TwitterFactory.getSingleton(); 
          consolePrint = console;
          statuses = new ArrayList<Status>();
       }
-   
-     /******************  Part 1 *******************/
-     /** 
-      * This method tweets a given message.
-      * @param String  a message you wish to Tweet out
-      */
+
+
+      //* This method tweets a given message.
       public void tweetOut(String message) throws TwitterException, IOException
       {
           Status status = twitter.updateStatus(message);
           System.out.println("Successfully updated status to {" + status.getText() + "]");
       }
    
-      
-     /******************  Part 2 *******************/
-     /** 
-      * This method queries the tweets of a particular user's handle.
-      * @param String  the Twitter handle (username) without the @sign
-      */
+
+      //* This method queries the tweets of a particular user's handle.
       @SuppressWarnings("unchecked")
-      public void queryHandle(String handle) throws TwitterException, IOException
-      {
+      public void queryHandle(String handle) throws TwitterException, IOException {
             statuses.clear();
             fetchTweets(handle);
             int counter = statuses.size();
@@ -57,14 +50,10 @@ public class Twitterer
                 System.out.println("Tweet #"+counter+": "+statuses.get(counter).getText());
             }
       }
-   	
-     /** 
-      * This helper method fetches the most recent 2,000 tweets of a particular user's handle and 
-      * stores them in an arrayList of Status objects.  Populates statuses.
-      * @param String  the Twitter handle (username) without the @sign
-      */
-      private void fetchTweets(String handle) throws TwitterException, IOException
-      {
+
+      //* This helper method fetches the most recent 2,000 tweets of a particular user's handle and
+      //* stores them in an arrayList of Status objects.  Populates statuses.
+      private void fetchTweets(String handle) throws TwitterException, IOException {
             Paging page = new Paging(1,200);
             int p = 1;
             while(p <= 10){
@@ -72,17 +61,33 @@ public class Twitterer
                 statuses.addAll(twitter.getUserTimeline(handle, page));
                 p++;
             }
-       }   
-    
-     /******************  Part 3 *******************/
-     /** 
-      * This method finds the last 100 queries in the San Antonio area since yesterday.
-      * Lat/Long for San Antonio is 29.4241° N, 98.4936° W (west is negative.)
-      * @param searchTerm the term to search for.
-      */
-      public void saQuery (String searchTerm)
-      {
-    
+            twitter.retweetStatus(statuses.get((new Random()).nextInt(statuses.size())).getId());
        }
+      // This method finds the last 100 queries in the San Antonio area since yesterday.
+      // Lat/Long for San Antonio is 29.4241° N, 98.4936° W (west is negative.)
+      public void saQuery (String searchTerm) {
+
+      }
+
+//       private static void menu(Twitter twitter) throws TwitterException, IOException {
+//           System.out.println("DF Bot Menu");
+//           System.out.println("1. Update Status");
+//           System.out.println("2. View Timeline");
+//           System.out.println("3. Exit");
+//
+//           System.out.println("Please enter your choice:");
+//
+//           BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//           String option = br.readLine();
+//           int a =Integer.parseInt( option );
+//
+//           switch(a){
+//               case 1: tweetOut(message);
+//               case 2: twitter.getUserTimeline(handle, page);
+//               case 3: System.out.println("Bye!"); System.exit(0);
+//               default: menu(dftb);
+//           }
+//
+//       }
    
    }  
