@@ -25,8 +25,8 @@ import java.util.Scanner;
          // Problem 1         
          // Create and set a String called message here
       
-         String message = "philosophical v a g e n e";
-           bigBird.tweetOut(message);
+//         String message = "philosophical v a g e n e";
+//           bigBird.tweetOut(message);
 
          // Problem 2
          // Choose a public Twitter user's handle
@@ -47,7 +47,7 @@ import java.util.Scanner;
          // Problem 3
          // Find all Spurs-related tweets in a 20 mile radius around San Antonio
          // in the past day.
-         bigBird.saQuery("Spurs");
+         bigBird.locQuery("Trump");
 
       }//main         
          

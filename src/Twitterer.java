@@ -65,8 +65,26 @@ public class Twitterer
        }
       // This method finds the last 100 queries in the San Antonio area since yesterday.
       // Lat/Long for San Antonio is 29.4241° N, 98.4936° W (west is negative.)
-      public void saQuery (String searchTerm) {
+      public void locQuery (String searchTerm) {
+            Query query = new Query(searchTerm);
+            query.setCount(100);
+            query.setGeoCode(new GeoLocation(34.0522, -118.2437), 100, Query.MILES);
+            query.setSince("2018-06-01");
 
+            try{
+                QueryResult result = twitter.search(query);
+                int count = 0;
+                System.out.println("Count: " + result.getTweets().size());
+                for(Status tweet: result.getTweets()){
+                    count++;
+                    System.out.println("Tweet #" + count + ": @" + tweet.getUser().getName()+
+                    "tweeted \""+tweet.getText()+"\"");
+
+                }
+            }catch(TwitterException e){
+                e.printStackTrace();
+            }
+          System.out.println();
       }
 
 //       private static void menu(Twitter twitter) throws TwitterException, IOException {
