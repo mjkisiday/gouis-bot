@@ -35,7 +35,7 @@ public class TwitterDriver
                   if (r == 1) {
                      bigBird.tweetOut(wordgenerator.randomSentence());
                   }else {
-                     bigBird.tweetOut(new madlib().madlib1());
+                     bigBird.tweetOut(new madlib().getRandomMadlib());
                   }
                } else if (n == 2) {
                   bigBird.queryHandle(wordgenerator.randomHandle());

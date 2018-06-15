@@ -13,7 +13,7 @@ public class wordgenerator {
             "all s a d", "with the crumpled horn", "while I ate dogge" };
 
     static final private String[] phrases = { " I am ", " This is ", " You are ", " We is ", " She be ", " To be ", " That is ", "I wasn't ",
-            "My mom is ", "If she breathed "};
+            "My mom is ", "If she breathed ", "cuz all women are queens "};
 
     static final private String[] buzzwords = {"Trump", "Kanye", "Russia", "equity", "my president", "ihop", "ihob", "kim jong", "flat earth"};
 
