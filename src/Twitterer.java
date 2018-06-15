@@ -49,7 +49,7 @@ public class Twitterer
                 counter--;
                 System.out.println("Tweet #"+counter+": "+statuses.get(counter).getText());
             }
-          twitter.retweetStatus(statuses.get((new Random()).nextInt(statuses.size())).getId());
+
       }
 
       //* This helper method fetches the most recent 2,000 tweets of a particular user's handle and
@@ -74,14 +74,9 @@ public class Twitterer
 
             try{
                 QueryResult result = twitter.search(query);
-                int count = 0;
-                System.out.println("Count: " + result.getTweets().size());
-                for(Status tweet: result.getTweets()){
-                    count++;
-                    System.out.println("Tweet #" + count + ": @" + tweet.getUser().getName()+
-                    "tweeted \""+tweet.getText()+"\"");
-
-                }
+                Status tweet = result.getTweets().get((int)(Math.random()*result.getTweets().size()));
+                System.out.println("RT'd: " + tweet.getText());
+                twitter.retweetStatus(tweet.getId());
             }catch(TwitterException e){
                 e.printStackTrace();
             }

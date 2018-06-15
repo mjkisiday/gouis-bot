@@ -31,18 +31,32 @@ public class TwitterDriver
                Random rand = new Random();
                int n = rand.nextInt((2) + 1) + 1;
                if (n == 1) {
-                  bigBird.tweetOut(wordgenerator.randomSentence());
+                  int r = rand.nextInt((1) + 1)+ 1;
+                  if (r == 1) {
+                     bigBird.tweetOut(wordgenerator.randomSentence());
+                  }else {
+                     bigBird.tweetOut(new madlib().madlib1());
+                  }
                } else if (n == 2) {
                   bigBird.queryHandle(wordgenerator.randomHandle());
                } else {
                   bigBird.locQuery(wordgenerator.randomBuzzWord());
                }
                try {
-                  TimeUnit.HOURS.sleep(4);
+                  TimeUnit.SECONDS.sleep(20);
                }catch(Exception e){
                   System.out.println("I broke");
                }
             }
+
+
+
+
+
+
+
+
+
 
 
 

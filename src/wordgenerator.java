@@ -1,24 +1,24 @@
 public class wordgenerator {
 
-    static final private String[] nouns = { "F", "my life", "matti", "zachary", "vegetable oil",
+    static final private String[] nouns = { "life", "matti", "zachary", "vegetable oil",
             "scrubs", "juicy dog", "expose marker", "tinfoil machine", "herbs", "foot lettuce", "menstural cycle", "appendix",
             "The Lord", "z u c c ", "jeuse"};
 
-    static final private String[] verbs = { "ran", "swam", "succ'd",
-            "milk'd", "itch'd", "seduc'd", "eroticiz'd", "extricated", "excreetated", "pinched", "instantiated", "ate", "exterminat,d",
+    static final private String[] verbs = { "ran", "swam", "succd",
+            "milked", "itched", "seduced", "eroticized", "extricated", "excreetated", "pinched", "instantiated", "ate", "exterminated",
             "exanguinated"};
 
     static final private String[] modifiers = { "that left me to die", "showing my superiority",
             "all asian and caucasian",
             "all s a d", "with the crumpled horn", "while I ate dogge" };
 
-    static final private String[] phrases = { " I am ", " This is ", " You are ", " We is ", " She be ", " To be ", " That is ", "I wasn't",
-            "My mom is "};
+    static final private String[] phrases = { " I am ", " This is ", " You are ", " We is ", " She be ", " To be ", " That is ", "I wasn't ",
+            "My mom is ", "If she breathed "};
 
     static final private String[] buzzwords = {"Trump", "Kanye", "Russia", "equity", "my president", "ihop", "ihob", "kim jong", "flat earth"};
 
     static final private String[] handles = {"realDonaldTrump", "kanyewest", "wendys", "RudyGiuilani", "BurgerKing", "elonmusk", "jacobsartorius",
-                                                "PPFA", "JonTronShow", "JimCarrey"};
+                                                "PPFA", "JonTronShow", "JimCarrey", "Pontifex"};
 
 
     /**
@@ -47,7 +47,7 @@ public class wordgenerator {
 
         /* "this is", optionally followed by a noun phrase, followed by "the house that Jack built. */
         StringBuilder sb = new StringBuilder();
-        int p = (int)(Math.random()*nouns.length);
+        int p = (int)(Math.random()*phrases.length);
         sb.append(phrases[p]);
         if (Math.random() > 0.15) { // 85% of sentences have a noun phrase.
             sb.append(randomNounPhrase());
