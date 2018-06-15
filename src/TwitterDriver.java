@@ -11,24 +11,50 @@ import twitter4j.TwitterException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
-   public class TwitterDriver
+
+
+public class TwitterDriver
    {
       private static PrintStream consolePrint;
    
       public static void main (String []args) throws TwitterException, IOException
       {
-         // set up classpath and properties file
              
          Twitterer bigBird = new Twitterer(consolePrint);
 
-         // Problem 1         
+            while(true) {
+               Random rand = new Random();
+               int n = rand.nextInt((2) + 1) + 1;
+               if (n == 1) {
+                  bigBird.tweetOut(wordgenerator.randomSentence());
+               } else if (n == 2) {
+                  bigBird.queryHandle(wordgenerator.randomHandle());
+               } else {
+                  bigBird.locQuery(wordgenerator.randomBuzzWord());
+               }
+               try {
+                  TimeUnit.HOURS.sleep(4);
+               }catch(Exception e){
+                  System.out.println("I broke");
+               }
+            }
+
+
+
+
+
+
          // Create and set a String called message here
       
-//         String message = "philosophical v a g e n e";
-//           bigBird.tweetOut(message);
+//         String message = "kill me";
+//           bigBird.tweetOut(wordgenerator.randomSentence());
+//         System.out.println(wordgenerator.randomSentence());
 
-         // Problem 2
          // Choose a public Twitter user's handle
          // and analyze their tweets
          
@@ -43,11 +69,10 @@ import java.util.Scanner;
           //   twitter_handle = scan.next();
              
          //}
-         
-         // Problem 3
+
          // Find all Spurs-related tweets in a 20 mile radius around San Antonio
          // in the past day.
-         bigBird.locQuery("Trump");
+//         bigBird.locQuery("Trump");
 
       }//main         
          

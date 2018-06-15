@@ -49,6 +49,7 @@ public class Twitterer
                 counter--;
                 System.out.println("Tweet #"+counter+": "+statuses.get(counter).getText());
             }
+          twitter.retweetStatus(statuses.get((new Random()).nextInt(statuses.size())).getId());
       }
 
       //* This helper method fetches the most recent 2,000 tweets of a particular user's handle and
@@ -87,25 +88,5 @@ public class Twitterer
           System.out.println();
       }
 
-//       private static void menu(Twitter twitter) throws TwitterException, IOException {
-//           System.out.println("DF Bot Menu");
-//           System.out.println("1. Update Status");
-//           System.out.println("2. View Timeline");
-//           System.out.println("3. Exit");
-//
-//           System.out.println("Please enter your choice:");
-//
-//           BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//           String option = br.readLine();
-//           int a =Integer.parseInt( option );
-//
-//           switch(a){
-//               case 1: tweetOut(message);
-//               case 2: twitter.getUserTimeline(handle, page);
-//               case 3: System.out.println("Bye!"); System.exit(0);
-//               default: menu(dftb);
-//           }
-//
-//       }
    
    }  
